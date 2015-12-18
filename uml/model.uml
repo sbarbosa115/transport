@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_rJ5H0JzrEeWk2OVm0i0SWA" name="Vehicle">
+  <packagedElement xmi:type="uml:Class" xmi:id="_znkpUJzsEeWk2OVm0i0SWA" name="Vehicle">
+    <generalization xmi:id="_XiHlEJztEeWk2OVm0i0SWA" general="_UgN6UJztEeWk2OVm0i0SWA"/>
+    <ownedAttribute xmi:id="_oPpAgKUrEeWRm_DTAUNawg" name="capacity" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_UgN6UJztEeWk2OVm0i0SWA" name="Agent">
+    <ownedAttribute xmi:id="_ENpQoKR1EeWK29e9tIXN9A" name="percept" visibility="private"/>
+    <ownedAttribute xmi:id="_XHXIoKR1EeWK29e9tIXN9A" name="move" visibility="private"/>
+    <ownedAttribute xmi:id="_ceC5cKR1EeWK29e9tIXN9A" name="sensor" visibility="private"/>
+    <ownedAttribute xmi:id="_I1rUAKUrEeWRm_DTAUNawg" name="speed" visibility="private"/>
+    <ownedAttribute xmi:id="_aXFN4KUuEeWRm_DTAUNawg" name="size" visibility="private"/>
+    <ownedAttribute xmi:id="_dm7VYKUrEeWRm_DTAUNawg" name="location" visibility="private"/>
+    <ownedAttribute xmi:id="_R1ZBAKUrEeWRm_DTAUNawg" name="destination" visibility="private"/>
+    <ownedAttribute xmi:id="_O6YBYKUrEeWRm_DTAUNawg" name="origin" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Hl8xYJzvEeWk2OVm0i0SWA" name="Bus">
+    <generalization xmi:id="_N4XKoJzvEeWk2OVm0i0SWA" general="_znkpUJzsEeWk2OVm0i0SWA"/>
+    <ownedAttribute xmi:id="__G66QKUrEeWRm_DTAUNawg" name="stop_time_with_capacity" visibility="private"/>
+    <ownedAttribute xmi:id="_E4mlAKUsEeWRm_DTAUNawg" name="stop_time_without_capacity"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2EX7kJzvEeWk2OVm0i0SWA" name="Person">
+    <generalization xmi:id="_-q3QQJzvEeWk2OVm0i0SWA" general="_UgN6UJztEeWk2OVm0i0SWA"/>
+    <ownedAttribute xmi:id="_gKL08KUuEeWRm_DTAUNawg" name="route" visibility="private" type="_8wY04KR0EeWK29e9tIXN9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_n7cGoKRxEeWK29e9tIXN9A" name="Route">
+    <ownedAttribute xmi:id="_dDjlwKUvEeWRm_DTAUNawg" name="routes_stations" visibility="private" type="_pGirAKR1EeWK29e9tIXN9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_8wY04KR0EeWK29e9tIXN9A" name="person_route" memberEnd="_8waDAKR0EeWK29e9tIXN9A _8wx2caR0EeWK29e9tIXN9A" navigableOwnedEnd="_8waDAKR0EeWK29e9tIXN9A _8wx2caR0EeWK29e9tIXN9A">
+    <ownedEnd xmi:id="_8waDAKR0EeWK29e9tIXN9A" name="persons" type="_2EX7kJzvEeWk2OVm0i0SWA" association="_8wY04KR0EeWK29e9tIXN9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8wwBQKR0EeWK29e9tIXN9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8wx2cKR0EeWK29e9tIXN9A" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_8wx2caR0EeWK29e9tIXN9A" name="routes" type="_n7cGoKRxEeWK29e9tIXN9A" association="_8wY04KR0EeWK29e9tIXN9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8xJC0KR0EeWK29e9tIXN9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8xJp4KR0EeWK29e9tIXN9A" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_AsL8EKR1EeWK29e9tIXN9A" name="vehicles_routes" memberEnd="_AsMjIKR1EeWK29e9tIXN9A _AsOYUaR1EeWK29e9tIXN9A" navigableOwnedEnd="_AsMjIKR1EeWK29e9tIXN9A _AsOYUaR1EeWK29e9tIXN9A">
+    <ownedEnd xmi:id="_AsMjIKR1EeWK29e9tIXN9A" name="vehicles" type="_znkpUJzsEeWk2OVm0i0SWA" association="_AsL8EKR1EeWK29e9tIXN9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AsNxQKR1EeWK29e9tIXN9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AsOYUKR1EeWK29e9tIXN9A" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_AsOYUaR1EeWK29e9tIXN9A" name="routes" type="_n7cGoKRxEeWK29e9tIXN9A" association="_AsL8EKR1EeWK29e9tIXN9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AsPmcKR1EeWK29e9tIXN9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AsPmcaR1EeWK29e9tIXN9A" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kMt1UKR1EeWK29e9tIXN9A" name="Station">
+    <ownedAttribute xmi:id="_kaCn8KUrEeWRm_DTAUNawg" name="capacity" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pGirAKR1EeWK29e9tIXN9A" name="routes_stations" memberEnd="_pGjSEKR1EeWK29e9tIXN9A _pGluUKR1EeWK29e9tIXN9A" navigableOwnedEnd="_pGjSEKR1EeWK29e9tIXN9A _pGluUKR1EeWK29e9tIXN9A">
+    <ownedEnd xmi:id="_pGjSEKR1EeWK29e9tIXN9A" name="routes" type="_n7cGoKRxEeWK29e9tIXN9A" association="_pGirAKR1EeWK29e9tIXN9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pGlHQKR1EeWK29e9tIXN9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pGlHQaR1EeWK29e9tIXN9A" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_pGluUKR1EeWK29e9tIXN9A" name="stations" type="_kMt1UKR1EeWK29e9tIXN9A" association="_pGirAKR1EeWK29e9tIXN9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pGm8cKR1EeWK29e9tIXN9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pGm8caR1EeWK29e9tIXN9A" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oDf6kKUuEeWRm_DTAUNawg" name="environment "/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-EBygKUuEeWRm_DTAUNawg" name="highway">
+    <ownedAttribute xmi:id="_p9TC4KUwEeWRm_DTAUNawg" name="sense" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VOgVEKUvEeWRm_DTAUNawg" name="traffic light">
+    <ownedAttribute xmi:id="_qbtSoKUvEeWRm_DTAUNawg" name="time_red"/>
+    <ownedAttribute xmi:id="_rhE_QKUvEeWRm_DTAUNawg" name="time_yellow"/>
+    <ownedAttribute xmi:id="_s6N8cKUvEeWRm_DTAUNawg" name="time_green"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Rr1DEKUwEeWRm_DTAUNawg" memberEnd="_Rr1DEaUwEeWRm_DTAUNawg _RsEToqUwEeWRm_DTAUNawg" navigableOwnedEnd="_RsEToqUwEeWRm_DTAUNawg">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_Rr1DEaUwEeWRm_DTAUNawg" name="environment s" type="_oDf6kKUuEeWRm_DTAUNawg" aggregation="composite" association="_Rr1DEKUwEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RsEToKUwEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RsEToaUwEeWRm_DTAUNawg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_RsEToqUwEeWRm_DTAUNawg" name="highways" type="_-EBygKUuEeWRm_DTAUNawg" association="_Rr1DEKUwEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RsRvAKUwEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RsRvAaUwEeWRm_DTAUNawg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_VD7nUKUwEeWRm_DTAUNawg" memberEnd="_VD8OYKUwEeWRm_DTAUNawg _VD81cqUwEeWRm_DTAUNawg" navigableOwnedEnd="_VD81cqUwEeWRm_DTAUNawg">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_VD8OYKUwEeWRm_DTAUNawg" name="environment s" type="_oDf6kKUuEeWRm_DTAUNawg" aggregation="composite" association="_VD7nUKUwEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VD81cKUwEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VD81caUwEeWRm_DTAUNawg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_VD81cqUwEeWRm_DTAUNawg" name="traffic lights" type="_VOgVEKUvEeWRm_DTAUNawg" association="_VD7nUKUwEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VD9cgKUwEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VD9cgaUwEeWRm_DTAUNawg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="__BiRsKUwEeWRm_DTAUNawg" memberEnd="__BiRsaUwEeWRm_DTAUNawg __Bi4wqUwEeWRm_DTAUNawg" navigableOwnedEnd="__Bi4wqUwEeWRm_DTAUNawg">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="__BiRsaUwEeWRm_DTAUNawg" name="highways" type="_-EBygKUuEeWRm_DTAUNawg" aggregation="composite" association="__BiRsKUwEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Bi4wKUwEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Bi4waUwEeWRm_DTAUNawg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="__Bi4wqUwEeWRm_DTAUNawg" name="traffic lights" type="_VOgVEKUvEeWRm_DTAUNawg" association="__BiRsKUwEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Bjf0KUwEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__Bjf0aUwEeWRm_DTAUNawg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_A3ftwKUxEeWRm_DTAUNawg" memberEnd="_A3ftwaUxEeWRm_DTAUNawg _A3gU0qUxEeWRm_DTAUNawg" navigableOwnedEnd="_A3gU0qUxEeWRm_DTAUNawg">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_A3ftwaUxEeWRm_DTAUNawg" name="environment s" type="_oDf6kKUuEeWRm_DTAUNawg" aggregation="composite" association="_A3ftwKUxEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A3gU0KUxEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A3gU0aUxEeWRm_DTAUNawg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_A3gU0qUxEeWRm_DTAUNawg" name="agents" type="_UgN6UJztEeWk2OVm0i0SWA" association="_A3ftwKUxEeWRm_DTAUNawg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A3g74KUxEeWRm_DTAUNawg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A3g74aUxEeWRm_DTAUNawg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
