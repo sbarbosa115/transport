@@ -794,7 +794,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_oDhvwKUuEeWRm_DTAUNawg" name="environment " outgoingEdges="_RuOPwKUwEeWRm_DTAUNawg _VEdLwKUwEeWRm_DTAUNawg _A37yoKUxEeWRm_DTAUNawg" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_oDhvwKUuEeWRm_DTAUNawg" name="Environment " outgoingEdges="_RuOPwKUwEeWRm_DTAUNawg _VEdLwKUwEeWRm_DTAUNawg _A37yoKUxEeWRm_DTAUNawg" width="12" height="10">
         <target xmi:type="uml:Class" href="model.uml#_oDf6kKUuEeWRm_DTAUNawg"/>
         <semanticElements xmi:type="uml:Class" href="model.uml#_oDf6kKUuEeWRm_DTAUNawg"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -809,7 +809,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_-EBygaUuEeWRm_DTAUNawg" name="highway" outgoingEdges="__CLK4KUwEeWRm_DTAUNawg" incomingEdges="_RuOPwKUwEeWRm_DTAUNawg" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_-EBygaUuEeWRm_DTAUNawg" name="Highway" outgoingEdges="__CLK4KUwEeWRm_DTAUNawg" incomingEdges="_RuOPwKUwEeWRm_DTAUNawg" width="12" height="10">
         <target xmi:type="uml:Class" href="model.uml#_-EBygKUuEeWRm_DTAUNawg"/>
         <semanticElements xmi:type="uml:Class" href="model.uml#_-EBygKUuEeWRm_DTAUNawg"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -835,7 +835,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_VOg8IKUvEeWRm_DTAUNawg" name="traffic light" incomingEdges="_VEdLwKUwEeWRm_DTAUNawg __CLK4KUwEeWRm_DTAUNawg" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_VOg8IKUvEeWRm_DTAUNawg" name="Traffic_Light" incomingEdges="_VEdLwKUwEeWRm_DTAUNawg __CLK4KUwEeWRm_DTAUNawg" width="12" height="10">
         <target xmi:type="uml:Class" href="model.uml#_VOgVEKUvEeWRm_DTAUNawg"/>
         <semanticElements xmi:type="uml:Class" href="model.uml#_VOgVEKUvEeWRm_DTAUNawg"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>

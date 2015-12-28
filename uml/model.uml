@@ -59,11 +59,11 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pGm8caR1EeWK29e9tIXN9A" value="*"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_oDf6kKUuEeWRm_DTAUNawg" name="environment "/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_-EBygKUuEeWRm_DTAUNawg" name="highway">
+  <packagedElement xmi:type="uml:Class" xmi:id="_oDf6kKUuEeWRm_DTAUNawg" name="Environment "/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-EBygKUuEeWRm_DTAUNawg" name="Highway">
     <ownedAttribute xmi:id="_p9TC4KUwEeWRm_DTAUNawg" name="sense" visibility="private"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_VOgVEKUvEeWRm_DTAUNawg" name="traffic light">
+  <packagedElement xmi:type="uml:Class" xmi:id="_VOgVEKUvEeWRm_DTAUNawg" name="Traffic_Light">
     <ownedAttribute xmi:id="_qbtSoKUvEeWRm_DTAUNawg" name="time_red"/>
     <ownedAttribute xmi:id="_rhE_QKUvEeWRm_DTAUNawg" name="time_yellow"/>
     <ownedAttribute xmi:id="_s6N8cKUvEeWRm_DTAUNawg" name="time_green"/>
