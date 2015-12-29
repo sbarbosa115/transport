@@ -12,17 +12,32 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import com.transport.classes.Bus;
+import com.transport.classes.Station;
+
 public class DrawBus extends JPanel {
 	List<Bus> buses;
+	List<Station> stations;
 
 	public DrawBus(JFrame frame) {
 		buses = new ArrayList<>();
-		buses.add(new Bus(100, 10, "left"));
-		buses.add(new Bus(100, 100, "rigth"));
+		buses.add(new Bus(frame.getWidth(), 10, "left"));
+		buses.add(new Bus(0, 100, "rigth"));
+
+		stations = new ArrayList<>();
+		stations.add(new Station(500, 60));
+		for (Station station : stations) {
+			repaint();
+		}
 
 		Timer timer = new Timer(50, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Bus bus : buses) {
+					if (bus.getX() == 500) {
+						System.out.print("------------- Stop");
+						bus.stop();
+					}
+
 					if (bus.direction == "left") {
 						bus.moveLeft(frame);
 					}
@@ -40,44 +55,14 @@ public class DrawBus extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		for (Bus bus : buses) {
-			bus.drawCar(g);
+			bus.drawBus(g);
+		}
+
+		for (Station station : stations) {
+			station.drawStation(g);
 		}
 	}
 
-	public class Bus {
-		private static final int INCREMENT = 5;
-		private int x, y;
-		private String direction;
-
-		public Bus(int x, int y, String direction) {
-			this.x = x;
-			this.y = y;
-			this.direction = direction;
-		}
-
-		public void drawCar(Graphics g) {
-			g.setColor(Color.RED);
-			g.fillRect(x, y, 100, 20);
-		}
-
-		public void moveLeft(JFrame frame) {
-
-			if (frame.getWidth() == x) {
-				x = 0;
-			} else {
-				x += INCREMENT;
-			}
-
-		}
-
-		public void moveRigth(JFrame frame) {
-			if (x == 0) {
-				x = frame.getWidth();
-			} else {
-				x -= INCREMENT;
-			}
-
-		}
-	}
+	
 
 }
