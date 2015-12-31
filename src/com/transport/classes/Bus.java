@@ -71,7 +71,7 @@ public class Bus extends Vehicle {
 		if(temp > 500 && temp < 600){
 			x = 500;
 		}
-		System.out.print(x + "\n");
+		//System.out.print(x + "\n");
 	}
 
 }

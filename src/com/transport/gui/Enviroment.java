@@ -14,11 +14,7 @@ public class Enviroment {
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
-                //JPanel panel = new JPanel(new GridLayout(1, 2));
-                //panel.add(new DrawStation(frame));
-                //panel.add(new DrawBus(frame));
                 frame.add(new DrawBus(frame));
-                //frame.add(new DrawBus(frame));
                 frame.setTitle("Traffic Simulator V1.0");
                 frame.setSize(width, height);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

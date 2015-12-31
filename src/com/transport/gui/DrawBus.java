@@ -33,6 +33,7 @@ public class DrawBus extends JPanel {
 		Timer timer = new Timer(50, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Bus bus : buses) {
+					bus.stop();
 					bus.setDirection(frame);
 					repaint();
 				}
