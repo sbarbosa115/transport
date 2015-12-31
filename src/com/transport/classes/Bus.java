@@ -9,6 +9,9 @@ public class Bus extends Vehicle {
 
 	private static final int INCREMENT = 5;
 	private int x, y;
+	public String status = "run";
+	public int temp = 0; 
+	
 	public int getX() {
 		return x;
 	}
@@ -52,12 +55,23 @@ public class Bus extends Vehicle {
 		} else {
 			x -= INCREMENT;
 		}
-
 	}
 	
-	public void stop() {
-		
-			this.x = 500;
-		
+	public void setDirection(JFrame frame){
+		if (this.direction == "left") {
+			this.moveLeft(frame);
+		}
+		if (this.direction == "rigth") {
+			this.moveRigth(frame);
+		}
 	}
+	
+	public void stop(){
+		temp += INCREMENT;
+		if(temp > 500 && temp < 600){
+			x = 500;
+		}
+		System.out.print(x + "\n");
+	}
+
 }

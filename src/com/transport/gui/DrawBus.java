@@ -21,7 +21,7 @@ public class DrawBus extends JPanel {
 
 	public DrawBus(JFrame frame) {
 		buses = new ArrayList<>();
-		buses.add(new Bus(frame.getWidth(), 10, "left"));
+		buses.add(new Bus(frame.getWidth(), 0, "left"));
 		buses.add(new Bus(0, 100, "rigth"));
 
 		stations = new ArrayList<>();
@@ -33,17 +33,7 @@ public class DrawBus extends JPanel {
 		Timer timer = new Timer(50, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Bus bus : buses) {
-					if (bus.getX() == 500) {
-						System.out.print("------------- Stop");
-						bus.stop();
-					}
-
-					if (bus.direction == "left") {
-						bus.moveLeft(frame);
-					}
-					if (bus.direction == "rigth") {
-						bus.moveRigth(frame);
-					}
+					bus.setDirection(frame);
 					repaint();
 				}
 			}
@@ -54,15 +44,21 @@ public class DrawBus extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (Bus bus : buses) {
-			bus.drawBus(g);
-		}
-
 		for (Station station : stations) {
 			station.drawStation(g);
+			for (Bus bus : buses) {
+				if(bus.status == "run"){
+					bus.drawBus(g);
+				}	
+				this.near(bus, station);
+			}
 		}
 	}
-
 	
+	public void near(Bus bus, Station station){
+		if(bus.getX() == station.getX()){
+			System.out.print("Near");
+		}
+	}
 
 }
