@@ -41,6 +41,10 @@ public class DrawBus extends JPanel {
 		});
 		timer.start();
 	}
+	
+	public void pull(){
+		
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
