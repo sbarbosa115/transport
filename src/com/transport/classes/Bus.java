@@ -5,13 +5,13 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-public class Bus extends Vehicle {
+public class Bus  {
 
 	private static final int INCREMENT = 5;
 	private int x, y;
 	public String status = "run";
-	public int temp = 0; 
-	
+	public int temp = 0;
+
 	public int getX() {
 		return x;
 	}
@@ -50,14 +50,18 @@ public class Bus extends Vehicle {
 	}
 
 	public void moveRigth(JFrame frame) {
+		
 		if (x == 0) {
 			x = frame.getWidth();
 		} else {
 			x -= INCREMENT;
 		}
+		if(temp <= 0){
+			temp = frame.getWidth();
+		}
 	}
-	
-	public void setDirection(JFrame frame){
+
+	public void setDirection(JFrame frame) {
 		if (this.direction == "left") {
 			this.moveLeft(frame);
 		}
@@ -66,12 +70,23 @@ public class Bus extends Vehicle {
 		}
 	}
 	
-	public void stop(){
-		temp += INCREMENT;
-		if(temp > 500 && temp < 600){
-			x = 500;
+
+	public void stop(Station station) {
+		if (this.direction == "left") {
+			temp += INCREMENT;
+			if (temp > station.getX() && temp < station.getX() + station.width) {
+				x = station.getX();
+			}
+		} else if(this.direction == "rigth") {
+			temp -= INCREMENT;
+			if (temp > station.getX() && temp < station.getX() + station.width) {
+				x = station.getX() + station.width;
+			}
+			System.out.print("StationGetX---->"+station.getX()+"\n");
+			System.out.print("StationGetX---->"+(station.getX() + station.width)+"\n");
+			System.out.print("Temp---->"+temp+"\n");
+			
 		}
-		//System.out.print(x + "\n");
 	}
 
 }

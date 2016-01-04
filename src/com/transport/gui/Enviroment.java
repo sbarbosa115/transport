@@ -7,8 +7,8 @@ public class Enviroment {
 
 	public int x = 0;
 	public int y = 0;
-	public int width = 1024;
-	public int height = 768;
+	public int width = 500;
+	public int height = 500;
 
 	public void createEnviroment() {
 		SwingUtilities.invokeLater(new Runnable() {

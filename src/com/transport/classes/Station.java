@@ -5,6 +5,8 @@ import java.awt.Graphics;
 
 public class Station {
 	private int x, y;
+	public int width = 75;
+	public int height = 30;
 
 	public int getX() {
 		return x;
@@ -29,6 +31,6 @@ public class Station {
 
 	public void drawStation(Graphics g) {
 		g.setColor(Color.GRAY);
-		g.fillRect(x, y, 75, 30);
+		g.fillRect(x, y, width, height);
 	}
 }

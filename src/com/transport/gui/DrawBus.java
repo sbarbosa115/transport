@@ -15,35 +15,31 @@ import javax.swing.Timer;
 import com.transport.classes.Bus;
 import com.transport.classes.Station;
 
-public class DrawBus extends JPanel {
+public class DrawBus extends JPanel implements Runnable {
 	List<Bus> buses;
 	List<Station> stations;
 
 	public DrawBus(JFrame frame) {
 		buses = new ArrayList<>();
-		buses.add(new Bus(frame.getWidth(), 0, "left"));
-		buses.add(new Bus(0, 100, "rigth"));
+		buses.add(new Bus(0, 15, "left"));
+		buses.add(new Bus(frame.getWidth(), 100, "rigth")); 
 
 		stations = new ArrayList<>();
-		stations.add(new Station(500, 60));
-		for (Station station : stations) {
-			repaint();
-		}
-
+		stations.add(new Station(100, 60));
+		stations.add(new Station(300, 60));
+	
 		Timer timer = new Timer(50, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for (Bus bus : buses) {
-					bus.stop();
-					bus.setDirection(frame);
-					repaint();
+				for(Station station : stations){
+					for (Bus bus : buses) {						
+						bus.stop(station);
+						bus.setDirection(frame);
+						repaint();
+					}
 				}
 			}
 		});
 		timer.start();
-	}
-	
-	public void pull(){
-		
 	}
 
 	@Override
@@ -55,15 +51,13 @@ public class DrawBus extends JPanel {
 				if(bus.status == "run"){
 					bus.drawBus(g);
 				}	
-				this.near(bus, station);
 			}
 		}
 	}
 	
-	public void near(Bus bus, Station station){
-		if(bus.getX() == station.getX()){
-			System.out.print("Near");
-		}
+	
+	public void run(){
+		
 	}
 
 }

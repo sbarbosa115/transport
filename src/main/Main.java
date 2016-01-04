@@ -9,7 +9,6 @@ public class Main {
 
 		Enviroment env = new Enviroment();
 		env.createEnviroment();
-		System.out.print("P;L");
 	}
 
 }
