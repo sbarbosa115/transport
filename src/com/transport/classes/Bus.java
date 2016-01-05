@@ -11,6 +11,8 @@ public class Bus  {
 	private int x, y;
 	public String status = "run";
 	public int temp = 0;
+	public int width = 75;
+	public int height = 30;
 
 	public int getX() {
 		return x;
@@ -38,26 +40,24 @@ public class Bus  {
 
 	public void drawBus(Graphics g) {
 		g.setColor(Color.RED);
-		g.fillRect(x, y, 75, 30);
+		g.fillRect(x, y, this.width, this.height);
 	}
 
 	public void moveLeft(JFrame frame) {
-		if (frame.getWidth() == x) {
+		if(x >= frame.getWidth()) {
 			x = 0;
+			temp = 0;
 		} else {
 			x += INCREMENT;
 		}
 	}
 
 	public void moveRigth(JFrame frame) {
-		
-		if (x == 0) {
+		if (x <= 0) {
 			x = frame.getWidth();
+			temp = frame.getWidth();
 		} else {
 			x -= INCREMENT;
-		}
-		if(temp <= 0){
-			temp = frame.getWidth();
 		}
 	}
 
@@ -79,12 +79,9 @@ public class Bus  {
 			}
 		} else if(this.direction == "rigth") {
 			temp -= INCREMENT;
-			if (temp > station.getX() && temp < station.getX() + station.width) {
-				x = station.getX() + station.width;
+			if (temp > station.getX() - this.height - 20 && temp < station.getX() + station.width - this.height - 20) {
+				x = station.getX();
 			}
-			System.out.print("StationGetX---->"+station.getX()+"\n");
-			System.out.print("StationGetX---->"+(station.getX() + station.width)+"\n");
-			System.out.print("Temp---->"+temp+"\n");
 			
 		}
 	}

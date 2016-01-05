@@ -25,8 +25,9 @@ public class DrawBus extends JPanel implements Runnable {
 		buses.add(new Bus(frame.getWidth(), 100, "rigth")); 
 
 		stations = new ArrayList<>();
-		stations.add(new Station(100, 60));
-		stations.add(new Station(300, 60));
+		stations.add(new Station(80, 60));
+		stations.add(new Station(220, 60));
+		stations.add(new Station(360, 60));
 	
 		Timer timer = new Timer(50, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

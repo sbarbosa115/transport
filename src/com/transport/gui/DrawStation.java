@@ -10,14 +10,7 @@ import javax.swing.JPanel;
 public class DrawStation extends JPanel {
 	List<Station> stations;
 
-	public DrawStation(JFrame frame) {
-		stations = new ArrayList<>();
-		stations.add(new Station(100, 100));
-		
-		for (Station station : stations) {
-			repaint();
-		}
-	}
+
 
 	@Override
 	protected void paintComponent(Graphics g) {
