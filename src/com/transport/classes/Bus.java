@@ -2,15 +2,19 @@ package com.transport.classes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
-public class Bus  {
+public class Bus {
 
-	private static final int INCREMENT = 5;
+	private static final int INCREMENT = 1;
 	private int x, y;
 	public String status = "run";
-	public int temp = 0;
 	public int width = 75;
 	public int height = 30;
 
@@ -44,10 +48,10 @@ public class Bus  {
 	}
 
 	public void moveLeft(JFrame frame) {
-		if(x >= frame.getWidth()) {
+		if (x >= frame.getWidth()) {
 			x = 0;
-			temp = 0;
-		} else {
+
+		} else if (status == "run") {
 			x += INCREMENT;
 		}
 	}
@@ -55,8 +59,8 @@ public class Bus  {
 	public void moveRigth(JFrame frame) {
 		if (x <= 0) {
 			x = frame.getWidth();
-			temp = frame.getWidth();
-		} else {
+
+		} else if (status == "run") {
 			x -= INCREMENT;
 		}
 	}
@@ -69,20 +73,32 @@ public class Bus  {
 			this.moveRigth(frame);
 		}
 	}
-	
 
-	public void stop(Station station) {
-		if (this.direction == "left") {
-			temp += INCREMENT;
-			if (temp > station.getX() && temp < station.getX() + station.width) {
-				x = station.getX();
+	public void stop(List<Integer> positions, List<Bus> buses) {
+		if (positions.contains(x)) {
+			status = "stop";
+			Timer timer = new Timer(500, new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					status = "run";
+				}
+			});
+			timer.start();
+		}
+
+		for (Bus bus : buses) {
+			if (this != bus) {
+				if ((bus.getX() + bus.width + 10) == this.getX() && this.direction == bus.direction) {
+					System.out.print("Same position \n");
+					status = "stop";
+					Timer timer = new Timer(800, new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							status = "run";
+						}
+					});
+					timer.start();
+				}
+
 			}
-		} else if(this.direction == "rigth") {
-			temp -= INCREMENT;
-			if (temp > station.getX() - this.height - 20 && temp < station.getX() + station.width - this.height - 20) {
-				x = station.getX();
-			}
-			
 		}
 	}
 
