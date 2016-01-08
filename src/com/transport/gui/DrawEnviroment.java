@@ -15,9 +15,10 @@ public class DrawEnviroment extends JPanel {
 		buses = new ArrayList<>();
 		buses.add(new Bus(0, 15, "left"));
 		buses.add(new Bus(80, 15, "left"));
-		buses.add(new Bus(130, 15, "left"));
+		//buses.add(new Bus(130, 15, "left"));
 		buses.add(new Bus(frame.getWidth(), 100, "rigth"));
 		buses.add(new Bus(frame.getWidth() + 100, 100, "rigth"));
+		buses.add(new Bus(frame.getWidth() + 200, 100, "rigth"));
 
 		stations = new ArrayList<>();
 		stations.add(new Station(80, 60));

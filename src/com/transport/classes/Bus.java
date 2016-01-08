@@ -77,7 +77,7 @@ public class Bus {
 	public void stop(List<Integer> positions, List<Bus> buses) {
 		if (positions.contains(x)) {
 			status = "stop";
-			Timer timer = new Timer(500, new ActionListener() {
+			Timer timer = new Timer(1000, new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					status = "run";
 				}
@@ -87,7 +87,23 @@ public class Bus {
 
 		for (Bus bus : buses) {
 			if (this != bus) {
-				if ((bus.getX() + bus.width + 10) == this.getX() && this.direction == bus.direction) {
+				if ((bus.getX() + bus.width + 25) == this.getX() && this.direction == bus.direction && this.direction == "left") {
+					System.out.print("Same position rigth to left \n");
+					status = "stop";
+					Timer timer = new Timer(8000, new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							status = "run";
+						}
+					});
+					timer.start();
+				}
+
+			}
+		}
+		
+		for (Bus bus : buses) {
+			if (this != bus) {
+				if ((bus.getX() + bus.width + 25) == this.getX() && this.direction == bus.direction && this.direction == "rigth") {
 					System.out.print("Same position \n");
 					status = "stop";
 					Timer timer = new Timer(800, new ActionListener() {
