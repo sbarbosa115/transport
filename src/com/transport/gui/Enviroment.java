@@ -7,7 +7,7 @@ public class Enviroment {
 
 	public int x = 0;
 	public int y = 0;
-	public int width = 500;
+	public int width = 1300;
 	public int height = 500;
 
 	public void createEnviroment() {

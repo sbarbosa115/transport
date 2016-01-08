@@ -1,10 +1,14 @@
 package com.transport.gui;
 
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import com.transport.classes.*;
 
 public class DrawEnviroment extends JPanel {
@@ -13,24 +17,33 @@ public class DrawEnviroment extends JPanel {
 
 	public DrawEnviroment(JFrame frame) {
 		buses = new ArrayList<>();
-		buses.add(new Bus(0, 15, "left"));
-		buses.add(new Bus(80, 15, "left"));
-		//buses.add(new Bus(130, 15, "left"));
-		buses.add(new Bus(frame.getWidth(), 100, "rigth"));
-		buses.add(new Bus(frame.getWidth() + 100, 100, "rigth"));
-		buses.add(new Bus(frame.getWidth() + 200, 100, "rigth"));
+		// --- Buses left
+		buses.add(new Bus(100, 15, "left"));
+		buses.add(new Bus(300, 15, "left"));
+		buses.add(new Bus(500, 15, "left"));
+		
+		// --- Buses Rigth
+		
+		buses.add(new Bus(0, 100, "rigth"));
+		buses.add(new Bus(200, 100, "rigth"));
+		buses.add(new Bus(400, 100, "rigth"));
+		buses.add(new Bus(600, 100, "rigth"));
+		
 
+		// --- Stations
 		stations = new ArrayList<>();
-		stations.add(new Station(80, 60));
-		stations.add(new Station(220, 60));
-		stations.add(new Station(360, 60));
+		stations.add(new Station(200, 53));
+		stations.add(new Station(400, 53));
+		stations.add(new Station(600, 53));
+		stations.add(new Station(800, 53));
+		stations.add(new Station(1000, 53));
 
-		Thread paintThread = new Thread(new Runnable() {
+		/*Thread paintThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(7);
+						Thread.sleep(10);
 						for (Bus bus : buses) {
 							bus.stop(stationsPositionsX(), buses);
 							bus.setDirection(frame);
@@ -43,7 +56,21 @@ public class DrawEnviroment extends JPanel {
 				}
 			}
 		});
-		paintThread.start();
+		paintThread.start();*/
+		Timer timer = new Timer(5, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //for(Station station : stations){
+                    for (Bus bus : buses) {       
+                    	
+                        bus.stop(stationsPositionsX(), buses);
+                        bus.setDirection(frame);
+                        //stopQueue(bus);
+                        repaint();
+                    }
+                //}
+            }
+        });
+        timer.start();
 	}
 	
 

@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public class Station {
 	private int x, y;
-	public int width = 75;
-	public int height = 30;
+	public int width = 110;
+	public int height = 40;
 
 	public int getX() {
 		return x;
