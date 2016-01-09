@@ -74,6 +74,12 @@ public class TrafficLight {
 		this.greenLigth = greenLigth;
 	}
 
+	/*
+	 * Different States.
+	 * 
+	 * This method change the state of Agent
+	 * The state of agent interact with another Agents in environment.
+	 */ 
 	public void changeColor() {
 		
 		if (status == "red" && timer.isRunning() == false) {
@@ -121,6 +127,7 @@ public class TrafficLight {
 
 	}
 
+	
 	public void drawTrafficLigth(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(x, y, width, height);

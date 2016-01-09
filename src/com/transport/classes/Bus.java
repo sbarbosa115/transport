@@ -83,6 +83,7 @@ public class Bus {
 	 * This method's is responsible for communicating with the different agents of
 	 * bus type, station type and traffic lights for actions in accordance with
 	 * position or status of other agents
+	 * 
 	 */
 	public void stopStation(List<Integer> positions, List<Bus> buses) {
 
@@ -105,6 +106,11 @@ public class Bus {
 		}
 	}
 
+	/*
+	 * Group decision
+	 * 
+	 * All Buses are coordinated for prevent the collision together.
+	 */
 	public void stopTrafficBus(List<Integer> positions, List<Bus> buses) {
 		for (Bus bus : buses) {
 			if (bus.direction == "rigth") {
@@ -135,6 +141,14 @@ public class Bus {
 		}
 	}
 
+	/*
+	 * Conflict Resolution
+	 * 
+	 * 
+	 * This method is a method of conflict resolution.
+	 * Stop Traffic Bus Near
+	 * The problem are collision between buses, This method ensures that no buses collides.
+	 */
 	public void stopTrafficBusNear(List<Integer> positions, List<Bus> buses) {
 		for (Bus bus : buses) {
 			if (bus.direction == "rigth") {
@@ -165,6 +179,14 @@ public class Bus {
 		}
 	}
 
+	/*
+	 * The language of communication.
+	 * 
+	 * This method allow the communication between Buses agents and Traffic-Light, 
+	 * The language of communication are the coordinates (x, y), all agent have a specific position in frame
+	 * In each iteration this position are updated.
+	 * 
+	 */
 	public void stopTrafficLight(int xCoordinate, List<Bus> buses, TrafficLight trafficLights) {
 		for (Bus bus : buses) {
 
