@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -76,112 +75,86 @@ public class Bus {
 	}
 
 	public void stop(List<Integer> positions, List<Bus> buses) {
-		
-		
 
-	    		if (positions.contains(x)) {
-	                status = "stop";
-	                
-	                Random rn = new Random();
-	                int n = 10000 - 8000 + 1;
-	                int i = rn.nextInt() % n;
-	                int randomNum =  8000 + i;
-	                
-	                Timer timer = new Timer(randomNum, new ActionListener() {
-	                    public void actionPerformed(ActionEvent e) {
-	                        status = "run";
-	                    }
-	                });
-	                timer.setRepeats(false);
-	                timer.start();
-	                if(this.direction == "left"){
-	                    x++;
-	                }
-	                if(this.direction == "rigth"){
-	                    x--;
-	                }
-	            }
-	    		
-    			for (Bus bus : buses) {
-    				if (bus.direction == "rigth")
-    				{
-						if ((bus.getX() + bus.width + 8) == this.x ) {
-							System.out.print("Same position rigth to left 10 \n");
-							status = "stop";
-								x = x + 6;
-							Timer timer = new Timer(4000, new ActionListener() {
-								public void actionPerformed(ActionEvent e) {
-									status = "run";
-								}
-							});
-							timer.start();
-						}
-    				}
-    				else if (bus.direction == "left")
-    				{
-						if ((bus.getX() - bus.width - 8) == this.x ) {
-							System.out.print("Same position rigth to left 10 \n");
-							status = "stop";
-								x = x - 6;
-							Timer timer = new Timer(4000, new ActionListener() {
-								public void actionPerformed(ActionEvent e) {
-									status = "run";
-								}
-							});
-							timer.start();
-						}
-    				}
-    			}
-    			
-    			for (Bus bus : buses) {
-    				if (bus.direction == "rigth")
-    				{
-						if ((bus.getX() + bus.width + 2) == this.x ) {
-							System.out.print("Same position rigth to left 10 \n");
-							status = "stop";
-								x = x + 3;
-							Timer timer = new Timer(4000, new ActionListener() {
-								public void actionPerformed(ActionEvent e) {
-									status = "run";
-								}
-							});
-							timer.start();
-						}
-    				}
-    				else if (bus.direction == "left")
-    				{
-						if ((bus.getX() - bus.width - 2) == this.x ) {
-							System.out.print("Same position rigth to left 10 \n");
-							status = "stop";
-								x = x - 3;
-							Timer timer = new Timer(4000, new ActionListener() {
-								public void actionPerformed(ActionEvent e) {
-									status = "run";
-								}
-							});
-							timer.start();
-						}
-    				}
-    			}
-	    		
-		
-		/*
+		if (positions.contains(x)) {
+			status = "stop";
+
+			Random rn = new Random();
+			int n = 10000 - 8000 + 1;
+			int i = rn.nextInt() % n;
+			int randomNum = 8000 + i;
+
+			Timer timer = new Timer(randomNum, new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					status = "run";
+				}
+			});
+			timer.setRepeats(false);
+			timer.start();
+			if (this.direction == "left") {
+				x++;
+			}
+			if (this.direction == "rigth") {
+				x--;
+			}
+		}
+
 		for (Bus bus : buses) {
-			if (this != bus) {
-				if ((bus.getX() + bus.width + 25) == this.getX() && this.direction == bus.direction && this.direction == "rigth") {
-					System.out.print("Same position \n");
+			if (bus.direction == "rigth") {
+				if ((bus.getX() + bus.width + 8) == this.x) {
+					System.out.print("Same position rigth to left 10 \n");
 					status = "stop";
-					Timer timer = new Timer(800, new ActionListener() {
+					x = x + 6;
+					Timer timer = new Timer(4000, new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							status = "run";
 						}
 					});
 					timer.start();
 				}
-
+			} else if (bus.direction == "left") {
+				if ((bus.getX() - bus.width - 8) == this.x) {
+					System.out.print("Same position rigth to left 10 \n");
+					status = "stop";
+					x = x - 6;
+					Timer timer = new Timer(4000, new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							status = "run";
+						}
+					});
+					timer.start();
+				}
 			}
 		}
-		*/
+
+		for (Bus bus : buses) {
+			if (bus.direction == "rigth") {
+				if ((bus.getX() + bus.width + 2) == this.x) {
+					System.out.print("Same position rigth to left 10 \n");
+					status = "stop";
+					x = x + 3;
+					Timer timer = new Timer(4000, new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							status = "run";
+						}
+					});
+					timer.start();
+				}
+			} else if (bus.direction == "left") {
+				if ((bus.getX() - bus.width - 2) == this.x) {
+					System.out.print("Same position rigth to left 10 \n");
+					status = "stop";
+					x = x - 3;
+					Timer timer = new Timer(4000, new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							status = "run";
+						}
+					});
+					timer.start();
+				}
+			}
+		}
+
 	}
 
 }
