@@ -7,6 +7,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+/*
+ * This class represents a traffic light agent, interacts directly with the agents of bus type, 
+ * simulates a real traffic situation.
+ * 
+ * It represents autonomy of an agent that does not require any other to function, 
+ * all logic for autonomy are write in changeColor() method. 
+ * 
+ * The algorithm is a time sequence in which each color is.
+ * 
+ */
 public class TrafficLight {
 
 	private int x, y, width = 25, height = 50;
@@ -15,7 +25,7 @@ public class TrafficLight {
 	private int greenLigth = 12000;
 	private int greenToRedLigth = 500;
 	private int redToGreenLigth = 500;
-	private String status = "red";
+	public String status = "red";
 	private Timer timer;
 	
 

@@ -16,12 +16,19 @@ public class DrawEnviroment extends JPanel {
 	List<Station> stations;
 	List<TrafficLight> trafficLights;
 
+	/**
+	 * This part of the code paints the overall environment, 
+	 * is the party responsible for performing actions every 5 milliseconds.
+	 */
 	public DrawEnviroment(JFrame frame) {
 		this.buildObjects();
 		Timer timer = new Timer(5, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Bus bus : buses) {
-					bus.stop(stationsPositionsX(), buses);
+					bus.stopStation(stationsPositionsX(), buses);
+					bus.stopTrafficBus(stationsPositionsX(), buses);
+					bus.stopTrafficBusNear(stationsPositionsX(), buses);
+					bus.stopTrafficLight(600, buses, trafficLights.get(0));
 					bus.setDirection(frame);
 					repaint();
 				}
@@ -34,6 +41,16 @@ public class DrawEnviroment extends JPanel {
 		timer.start();
 	}
 	
+	/**
+	 * Here the agents are created the two agents. 
+	 * In the class diagram and document talking about people but we ran out of time to implement it.
+	 * 
+	 * This part is dynamic, depending on the requirement classes to add more agents to the simulation are created, 
+	 * we fail to solve problems that were added in a dynamic position.
+	 * 
+	 * Aggregates agents must follow the rules of object collisions, 
+	 * so we must give the parameters in x, and taking into account the locations of the other objects in the window.
+	 */
 	private void buildObjects(){
 		buses = new ArrayList<>();
 		// --- Buses left
@@ -61,6 +78,11 @@ public class DrawEnviroment extends JPanel {
 		
 	}
 
+	/**
+	 * This part of the code is responsible for social skills, 
+	 * among the agents of bus type and station type agents, 
+	 * in a nutshell is responsible for telling the bus agent that is close to a station and must stop. 
+	 */
 	public List<Integer> stationsPositionsX() {
 		List<Integer> positions = new ArrayList<Integer>();
 		for (Station station : stations) {
@@ -69,6 +91,9 @@ public class DrawEnviroment extends JPanel {
 		return positions;
 	}
 
+	/**
+	 * It is responsible for rendering each of the agents within the frame.
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

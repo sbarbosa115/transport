@@ -8,8 +8,11 @@ public class Enviroment {
 	public int x = 0;
 	public int y = 0;
 	public int width = 1300;
-	public int height = 500;
+	public int height = 300;
 
+	/*
+	 * In this part, the window and the frame  are created need to display the simulation. 
+	 */
 	public void createEnviroment() {
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {

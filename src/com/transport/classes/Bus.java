@@ -5,11 +5,16 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+/**
+ * It represents the behavior of a bus on a route has problems as
+ * 
+ * Station stops Crash with other buses (Reactivity) Stops at traffic lights
+ * (Social Skills) Movement across highway (Autonomy)
+ */
 public class Bus {
 
 	private static final int INCREMENT = 1;
@@ -74,17 +79,17 @@ public class Bus {
 		}
 	}
 
-	public void stop(List<Integer> positions, List<Bus> buses) {
+	/*
+	 * This method's is responsible for communicating with the different agents of
+	 * bus type, station type and traffic lights for actions in accordance with
+	 * position or status of other agents
+	 */
+	public void stopStation(List<Integer> positions, List<Bus> buses) {
 
 		if (positions.contains(x)) {
 			status = "stop";
 
-			Random rn = new Random();
-			int n = 10000 - 8000 + 1;
-			int i = rn.nextInt() % n;
-			int randomNum = 8000 + i;
-
-			Timer timer = new Timer(randomNum, new ActionListener() {
+			Timer timer = new Timer(7000, new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					status = "run";
 				}
@@ -98,63 +103,86 @@ public class Bus {
 				x--;
 			}
 		}
+	}
 
+	public void stopTrafficBus(List<Integer> positions, List<Bus> buses) {
 		for (Bus bus : buses) {
 			if (bus.direction == "rigth") {
 				if ((bus.getX() + bus.width + 8) == this.x) {
-					System.out.print("Same position rigth to left 10 \n");
 					status = "stop";
-					x = x + 6;
-					Timer timer = new Timer(4000, new ActionListener() {
+					x = x + 2;
+					Timer timer = new Timer(2000, new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							status = "run";
 						}
 					});
+					timer.setRepeats(false);
 					timer.start();
 				}
 			} else if (bus.direction == "left") {
 				if ((bus.getX() - bus.width - 8) == this.x) {
-					System.out.print("Same position rigth to left 10 \n");
 					status = "stop";
-					x = x - 6;
-					Timer timer = new Timer(4000, new ActionListener() {
+					x = x - 2;
+					Timer timer = new Timer(2000, new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							status = "run";
 						}
 					});
+					timer.setRepeats(false);
 					timer.start();
 				}
 			}
 		}
+	}
 
+	public void stopTrafficBusNear(List<Integer> positions, List<Bus> buses) {
 		for (Bus bus : buses) {
 			if (bus.direction == "rigth") {
-				if ((bus.getX() + bus.width + 2) == this.x) {
-					System.out.print("Same position rigth to left 10 \n");
+				if ((bus.getX() + bus.width + 1) == this.x) {
 					status = "stop";
-					x = x + 3;
-					Timer timer = new Timer(4000, new ActionListener() {
+					x = x + 2;
+					Timer timer = new Timer(2000, new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							status = "run";
 						}
 					});
+					timer.setRepeats(false);
 					timer.start();
 				}
 			} else if (bus.direction == "left") {
-				if ((bus.getX() - bus.width - 2) == this.x) {
-					System.out.print("Same position rigth to left 10 \n");
+				if ((bus.getX() - bus.width - 1) == this.x) {
 					status = "stop";
-					x = x - 3;
-					Timer timer = new Timer(4000, new ActionListener() {
+					x = x - 2;
+					Timer timer = new Timer(2000, new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							status = "run";
 						}
 					});
+					timer.setRepeats(false);
 					timer.start();
 				}
 			}
 		}
+	}
 
+	public void stopTrafficLight(int xCoordinate, List<Bus> buses, TrafficLight trafficLights) {
+		for (Bus bus : buses) {
+
+			if (bus.direction == "rigth") {
+				if (xCoordinate + 20 == this.x && trafficLights.status == "red") {
+					status = "stop";
+					x = x + 6;
+					Timer timer = new Timer(1000, new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							status = "run";
+						}
+					});
+					timer.setRepeats(false);
+					timer.start();
+				}
+			}
+
+		}
 	}
 
 }
