@@ -1,10 +1,12 @@
 package com.transport.classes;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -16,9 +18,10 @@ import javax.swing.Timer;
  * (Social Skills) Movement across highway (Autonomy)
  */
 public class Bus {
-
+	static AtomicInteger nextId = new AtomicInteger();
 	private static final int INCREMENT = 1;
 	private int x, y;
+	private int id;
 	public String status = "run";
 	public int width = 75;
 	public int height = 30;
@@ -44,45 +47,41 @@ public class Bus {
 	public Bus(int x, int y, String direction) {
 		this.x = x;
 		this.y = y;
+		this.id = nextId.incrementAndGet();
 		this.direction = direction;
 	}
 
 	public void drawBus(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillRect(x, y, this.width, this.height);
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Gerogia", 1, 17));
+		g.drawString("BUS #" + this.id, x + 5, y + 15);
 	}
 
-	public void moveLeft(JFrame frame) {
-		if (x >= frame.getWidth()) {
-			x = 0;
-
-		} else if (status == "run") {
-			x += INCREMENT;
-		}
-	}
-
-	public void moveRigth(JFrame frame) {
-		if (x <= 0) {
-			x = frame.getWidth();
-
-		} else if (status == "run") {
-			x -= INCREMENT;
-		}
-	}
-
-	public void setDirection(JFrame frame) {
+	public void changeDirection(JFrame frame) {
 		if (this.direction == "left") {
-			this.moveLeft(frame);
+			if (x >= frame.getWidth()) {
+				this.y = 100;
+				this.direction = "rigth";
+			} else if (status == "run") {
+				x += INCREMENT;
+			}
 		}
 		if (this.direction == "rigth") {
-			this.moveRigth(frame);
+			if (x <= 0) {
+				this.y = 15;
+				this.direction = "left";
+			} else if (status == "run") {
+				x -= INCREMENT;
+			}
 		}
 	}
 
 	/*
-	 * This method's is responsible for communicating with the different agents of
-	 * bus type, station type and traffic lights for actions in accordance with
-	 * position or status of other agents
+	 * This method's is responsible for communicating with the different agents
+	 * of bus type, station type and traffic lights for actions in accordance
+	 * with position or status of other agents
 	 * 
 	 */
 	public void stopStation(List<Integer> positions, List<Bus> buses) {
@@ -145,9 +144,9 @@ public class Bus {
 	 * Conflict Resolution
 	 * 
 	 * 
-	 * This method is a method of conflict resolution.
-	 * Stop Traffic Bus Near
-	 * The problem are collision between buses, This method ensures that no buses collides.
+	 * This method is a method of conflict resolution. Stop Traffic Bus Near The
+	 * problem are collision between buses, This method ensures that no buses
+	 * collides.
 	 */
 	public void stopTrafficBusNear(List<Integer> positions, List<Bus> buses) {
 		for (Bus bus : buses) {
@@ -182,9 +181,10 @@ public class Bus {
 	/*
 	 * The language of communication.
 	 * 
-	 * This method allow the communication between Buses agents and Traffic-Light, 
-	 * The language of communication are the coordinates (x, y), all agent have a specific position in frame
-	 * In each iteration this position are updated.
+	 * This method allow the communication between Buses agents and
+	 * Traffic-Light, The language of communication are the coordinates (x, y),
+	 * all agent have a specific position in frame In each iteration this
+	 * position are updated.
 	 * 
 	 */
 	public void stopTrafficLight(int xCoordinate, List<Bus> buses, TrafficLight trafficLights) {
@@ -206,5 +206,4 @@ public class Bus {
 
 		}
 	}
-
 }

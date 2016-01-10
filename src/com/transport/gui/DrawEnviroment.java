@@ -29,7 +29,7 @@ public class DrawEnviroment extends JPanel {
 					bus.stopTrafficBus(stationsPositionsX(), buses);
 					bus.stopTrafficBusNear(stationsPositionsX(), buses);
 					bus.stopTrafficLight(600, buses, trafficLights.get(0));
-					bus.setDirection(frame);
+					bus.changeDirection(frame);
 					repaint();
 				}
 				
@@ -61,7 +61,7 @@ public class DrawEnviroment extends JPanel {
 		// --- Buses Rigth
 		buses.add(new Bus(0, 100, "rigth"));
 		buses.add(new Bus(200, 100, "rigth"));
-		buses.add(new Bus(400, 100, "rigth"));
+		buses.add(new Bus(290, 100, "rigth"));
 		buses.add(new Bus(600, 100, "rigth"));
 
 		// --- Stations
